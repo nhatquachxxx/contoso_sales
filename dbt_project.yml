@@ -38,7 +38,3 @@ models:
     staging:
       +materialized: table
       +schema: staging
-
-    test: 
-      +materialized: view
-      +schema: test
