@@ -33,4 +33,28 @@ WITH fact_contoso_sales_combine_source AS (
   FROM fact_contoso_sales_combine_source
 )
 
-SELECT * FROM fact_contoso_sales_convert_type
+, fact_contoso_sales_compute_revenue AS (
+  SELECT
+    sales_key
+    , date_key
+    , channel_key
+    , store_key
+    , product_key
+    , promotion_key
+    , geography_key
+    , date
+    , unit_cost
+    , unit_price
+    , sales_quantity
+    , return_quantity
+    , discount_quantity
+    , return_amount
+    , discount_amount
+    , sales_amount
+    , unit_cost * (sales_quantity - return_quantity) AS total_cost
+    , unit_price * sales_quantity AS gross_sales
+    , (unit_price * sales_quantity) - discount_amount - return_amount - (unit_cost * (sales_quantity - return_quantity)) AS net_revenue
+  FROM fact_contoso_sales_convert_type
+)
+
+SELECT * FROM fact_contoso_sales_compute_revenue

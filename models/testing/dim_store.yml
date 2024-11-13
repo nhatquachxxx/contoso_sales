@@ -14,3 +14,10 @@ models:
       - name: store_manager
         tests:
           - not_null
+
+      - name: geography_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_key

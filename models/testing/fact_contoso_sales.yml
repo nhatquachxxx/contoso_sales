@@ -2,6 +2,17 @@ version: 2
 
 models:
   - name: fact_contoso_sales
+
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "unit_cost * (sales_quantity - return_quantity) = total_cost"
+
+      - dbt_utils.expression_is_true:
+          expression: "unit_price * return_quantity = return_amount"
+
+      - dbt_utils.expression_is_true:
+          expression: "unit_price * sales_quantity - sales_amount = discount_amount"
+
     columns:
       - name: sales_key
         tests:
@@ -45,3 +56,5 @@ models:
           - relationships:
               to: ref('dim_geography')
               field: geography_key
+
+      
