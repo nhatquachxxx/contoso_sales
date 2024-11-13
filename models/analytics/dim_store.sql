@@ -6,7 +6,7 @@ WITH dim_store_source AS (
 , dim_store_convert_type AS (
   SELECT
     CAST(store_key AS INTEGER) AS store_key
-    , UPPER(store_manager) AS store_manager
+    , CAST(store_manager AS INTEGER) AS store_manager
     , UPPER(store_name) AS store_name
     , CAST(open_date AS DATE FORMAT 'MM/DD/YYYY') AS open_date
     , CAST(close_date AS DATE FORMAT 'MM/DD/YYYY') AS close_date

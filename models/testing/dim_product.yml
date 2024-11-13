@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dim_product
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+      
+      - name: product_name
+        tests:
+          - not_null
+      - name: brand_name
+        tests:
+          - not_null
+      - name: class_name
+        tests:
+          - not_null
+      - name: color_name
+        tests:
+          - not_null
+
+      - name: product_sub_category_key
+        tests:
+          - relationships:
+              to: ref('dim_product_sub_category')
+              field: product_sub_category_key

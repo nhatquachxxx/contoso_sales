@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_product_category
+    columns:
+      - name: product_category_key
+        tests:
+          - unique
+          - not_null
+
+      - name: product_category_name
+        tests:
+          - not_null

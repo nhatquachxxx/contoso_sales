@@ -8,7 +8,7 @@ WITH dim_product_source AS (
     CAST(product_key AS INTEGER) AS product_key
     , UPPER(product_name) AS product_name
     , product_description
-    , CAST(product_subcategory_key AS INTEGER) AS product_subcategory_key
+    , CAST(product_subcategory_key AS INTEGER) AS product_sub_category_key
     , manufacturer
     , UPPER(brand_name) AS brand_name
     , UPPER(class_name) AS class_name
@@ -27,7 +27,7 @@ WITH dim_product_source AS (
     product.product_key
     , product.product_name
     , product.product_description
-    , product.product_subcategory_key
+    , product.product_sub_category_key
     , product.manufacturer
     , product.brand_name
     , product.class_name
@@ -43,7 +43,7 @@ WITH dim_product_source AS (
     , cate.product_category_name AS product_category_name
   FROM dim_product_convert_type AS product
   LEFT JOIN {{ ref ('dim_product_sub_category') }} AS sub_cate
-    ON product.product_subcategory_key = sub_cate.product_sub_category_key
+    ON product.product_sub_category_key = sub_cate.product_sub_category_key
   LEFT JOIN {{ ref ('dim_product_category') }} AS cate
     ON sub_cate.product_category_key = cate.product_category_key
 )

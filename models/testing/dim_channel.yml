@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_channel
+    columns:
+      - name: channel_key
+        tests:
+          - unique
+          - not_null
+
+      - name: channel_name
+        tests:
+          - not_null

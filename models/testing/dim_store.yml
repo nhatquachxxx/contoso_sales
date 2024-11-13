@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_store
+    columns:
+      - name: store_key
+        tests:
+          - unique
+          - not_null
+
+      - name: store_name
+        tests:
+          - not_null
+      - name: store_manager
+        tests:
+          - not_null

@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: fact_contoso_sales
+    columns:
+      - name: sales_key
+        tests:
+          - unique
+          - not_null
+        
+      - name: date
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: "'2007-01-01'"
+              max_value: "'2009-12-31'"
+          - relationships:
+              to: ref('dim_date')
+              field: date
+
+      - name: channel_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_channel')
+              field: channel_key
+
+      - name: store_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_key
+
+      - name: product_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_key
+
+      - name: geography_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_key

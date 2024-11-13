@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_date
+    columns:
+      - name: date
+        tests:
+          - unique
+          - not_null
+
+      - name: calendar_year
+        tests:
+          - not_null
+          - accepted_values:
+              values: [2007, 2008, 2009]
+              quote: false
+
+      - name: calendar_half_year
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['H1', 'H2']
+
+      - name: calendar_quarter
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Q1', 'Q2', 'Q3', 'Q4']
+
+      - name: calendar_month
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+      
+      - name: calendar_day_of_week
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY']

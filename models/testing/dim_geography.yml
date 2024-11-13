@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_geography
+    columns:
+      - name: geography_key
+        tests:
+          - unique
+          - not_null
+
+      - name: continent_name
+        tests:
+          - not_null
+      - name: city_name
+        tests:
+          - not_null
+      - name: state_province_name
+        tests:
+          - not_null
+      - name: region_country_name
+        tests:
+          - not_null
